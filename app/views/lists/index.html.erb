@@ -1,9 +1,11 @@
-<h1>Lists</h1>
-<div class="card-grid">
+<div class="card card-lists">
+<ul class="list-group">
   <% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list)%></li>
-  </div>
-  <% end  %>
-</div>
+    <li class="list-group-item">
+      <%= link_to list.name, list_path(list) %>
+    </li>
+  <% end %>
+</ul>
 
-<%= link_to "Create new list", new_list_path %>
+<%= link_to "Create new list", new_list_path, class: "btn btn-primary mt-3" %>
+</div>

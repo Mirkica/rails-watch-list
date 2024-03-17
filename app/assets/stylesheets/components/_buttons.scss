@@ -1,0 +1,9 @@
+.btn-primary {
+  background-color: #007bff; // Customize button color
+  color: #fff; // Customize button text color
+  border: none; // Remove button border
+
+  &:hover {
+    background-color: #0056b3; // Change button color on hover
+  }
+}

@@ -1,22 +1,26 @@
-<h1>Movies</h1>
+<h1><%= @list.name %></h1>
 
-
-<div class="">
-  <% @list.bookmarks.each do |bookmark| %>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <img width="150px" src="<%= bookmark.movie.poster_url %>" alt="movie poster">
-      <h3><strong>Title:</strong> <%= bookmark.movie.title %></h3>
-      <p>Overview: <%= bookmark.movie.overview %></p>
-      <p>Rating: <%= bookmark.movie.rating %> ⭐</p>
-      <p>Comment: <%= bookmark.comment %></p>
+<div class="d-flex justify-content-center">
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-md-4 mb-4">
+        <div class="card d-flex flex-fill" style="width: 15rem;">
+          <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="movie poster">
+          <div class="card-body">
+            <h3><strong>Title:</strong> <%= bookmark.movie.title %></h3>
+            <p>Overview: <%= bookmark.movie.overview %></p>
+            <p>Rating: <%= bookmark.movie.rating %> ⭐</p>
+            <p><blockquote class="blockquote mb-0"> <%= bookmark.comment %></blockquote></p>
+            <%= link_to 'Delete movie', bookmark_path(bookmark), class: "btn btn-warning mt-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %>
+          </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<ul class="list-group list-group-flush">
+<div>
   <li><%= link_to 'Add a movie', new_list_bookmark_path(@list) %></li>
   <li><%= link_to 'Delete list', list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure"} %></li>
   <li><%= link_to 'Back to lists', lists_path %></li>
-</ul>
+</div>
